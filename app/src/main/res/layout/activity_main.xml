@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:fillViewport="true"
+    app:layout_collapseParallaxMultiplier="1.0"
+    tools:context="karlis_grintals.ligo.MainActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <ImageView
+
+            android:id="@+id/humanView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/natureView"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/human_bg" />
+
+        <ImageView
+            android:id="@+id/natureView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/fireView"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/humanView"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/nature_bg" />
+
+        <ImageView
+            android:id="@+id/fireView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/waterView"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/natureView"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/fire_bg" />
+
+        <ImageView
+            android:id="@+id/waterView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fireView"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/water_bg" />
+
+        <Button
+            android:id="@+id/humanButtonOne"
+            android:layout_width="222dp"
+            android:layout_height="131dp"
+            android:text="MIELASTS"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="297dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_border"
+            android:textSize="25sp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
