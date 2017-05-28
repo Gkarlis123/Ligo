@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible">
 
+
         <ImageView
 
             android:id="@+id/humanView"
@@ -27,8 +28,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/human_bg" />
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:srcCompat="@drawable/human_bg"
+            app:layout_constraintHorizontal_bias="1.0" />
 
         <ImageView
             android:id="@+id/natureView"
@@ -38,10 +40,11 @@
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/fireView"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/humanView"
+            app:layout_constraintTop_toBottomOf="@+id/infoBlockFragment"
             app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/nature_bg" />
 
@@ -68,7 +71,6 @@
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fireView"
@@ -77,16 +79,73 @@
 
         <Button
             android:id="@+id/humanButtonOne"
-            android:layout_width="222dp"
-            android:layout_height="131dp"
-            android:text="MIELASTS"
-            tools:layout_editor_absoluteX="54dp"
-            tools:layout_editor_absoluteY="297dp"
-            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/button_border"
-            android:textSize="25sp" />
+            android:tag="mielasts"
+            android:text="MIELASTS"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            app:layout_constraintDimensionRatio="W,1:2"
+            app:layout_constraintRight_toLeftOf="@+id/humanButtonTwo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/humanView"
+            android:layout_marginBottom="20dp" />
 
+        <Button
+            android:id="@+id/humanButtonTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:tag="zilesana"
+            android:text="ZĪLĒŠANA"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            app:layout_constraintDimensionRatio="W,1:2"
+            app:layout_constraintLeft_toRightOf="@+id/humanButtonOne"
+            app:layout_constraintRight_toLeftOf="@+id/humanButtonThree"
+            app:layout_constraintBottom_toBottomOf="@+id/humanView"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/humanButtonThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:tag="ligosana"
+            android:text="LĪGOŠANA"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            app:layout_constraintDimensionRatio="W,1:2"
+            app:layout_constraintLeft_toRightOf="@+id/humanButtonTwo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/humanView"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_bottom_border"
+            android:padding="5dp"
+            android:text="CILVĒKS"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/humanButtonTwo"
+            app:layout_constraintTop_toTopOf="@+id/humanView"/>
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/infoBlockFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/humanView"
+            app:layout_constraintBottom_toTopOf="@+id/natureView"
+            app:layout_constraintVertical_chainStyle="packed" />
 
     </android.support.constraint.ConstraintLayout>
-
 </ScrollView>
