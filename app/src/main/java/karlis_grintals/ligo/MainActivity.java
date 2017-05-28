@@ -4,6 +4,7 @@ import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,39 +31,70 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R2.id.humanButtonOne, R2.id.humanButtonTwo, R2.id.humanButtonThree}) void showInfo (View v) {
 
-        InfoBlock fragment = (InfoBlock) getSupportFragmentManager().findFragmentById(R.id.infoBlockFragment);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag((String)v.getTag());
 
-        Bundle buttonBundle = new Bundle();
+        getSupportFragmentManager().popBackStack();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
+
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+//                    .remove(fragment)
+//                    .commit();
+            return;
+        }
+
         String buttonTag = (String) v.getTag();
 
+        Bundle buttonBundle = new Bundle();
 
+        buttonBundle.putString("buttonTag", buttonTag);
 
-        if (fragment != null) {
-            String fragTag = (String) fragment.getTag();
+        InfoBlock newInfBlock = new InfoBlock();
+        newInfBlock.setArguments(buttonBundle);
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+                .addToBackStack(buttonTag)
+                .replace(R.id.infoBlockFragment, newInfBlock, buttonTag)
+                .commit();
 
-                buttonBundle.putString("buttonTag", buttonTag);
-
-                InfoBlock newInfBlock = new InfoBlock();
-                newInfBlock.setArguments(buttonBundle);
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-                        .replace(fragment.getId(), newInfBlock, buttonTag)
-                        .commit();
-
-        } else {
-            buttonBundle.putString("buttonTag", buttonTag);
-
-            InfoBlock newInfBlock = new InfoBlock();
-            newInfBlock.setArguments(buttonBundle);
-
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-                    .add(R.id.infoBlockFragment, newInfBlock, buttonTag)
-                    .commit();
-        }
+//        if (fragment != null) {
+//            String fragTag = (String) fragment.getTag();
+//
+//            if (!fragTag.equals(buttonTag)) {
+//
+//                buttonBundle.putString("buttonTag", buttonTag);
+//
+//                InfoBlock newInfBlock = new InfoBlock();
+//                newInfBlock.setArguments(buttonBundle);
+//
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+//                        .replace(fragment.getId(), newInfBlock, buttonTag)
+//                        .commit();
+//
+//            }  else {
+//
+//                getSupportFragmentManager().beginTransaction()
+//                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+//                        .remove(fragment)
+//                        .commit();
+//            }
+//        } else {
+//            buttonBundle.putString("buttonTag", buttonTag);
+//
+//            InfoBlock newInfBlock = new InfoBlock();
+//            newInfBlock.setArguments(buttonBundle);
+//
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+//                    .add(R.id.infoBlockFragment, newInfBlock, buttonTag)
+//                    .commit();
+//        }
     }
 }
