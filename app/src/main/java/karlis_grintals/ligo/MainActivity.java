@@ -31,70 +31,36 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R2.id.humanButtonOne, R2.id.humanButtonTwo, R2.id.humanButtonThree}) void showInfo (View v) {
 
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag((String)v.getTag());
+        String buttonTag = (String) v.getTag();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.infoBlockFragment);
 
-        getSupportFragmentManager().popBackStack();
+        if (fragment != null) {
 
-        if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
+            String fragmentTag = (String) fragment.getTag();
 
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-//                    .remove(fragment)
-//                    .commit();
-            return;
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
+
+            getSupportFragmentManager().popBackStack();
+
+            if (fragmentTag.equals(buttonTag)) {
+                return;
+            }
         }
 
-        String buttonTag = (String) v.getTag();
-
         Bundle buttonBundle = new Bundle();
+        InfoBlock newInfBlock = new InfoBlock();
 
         buttonBundle.putString("buttonTag", buttonTag);
-
-        InfoBlock newInfBlock = new InfoBlock();
         newInfBlock.setArguments(buttonBundle);
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
                 .addToBackStack(buttonTag)
                 .replace(R.id.infoBlockFragment, newInfBlock, buttonTag)
                 .commit();
-
-//        if (fragment != null) {
-//            String fragTag = (String) fragment.getTag();
-//
-//            if (!fragTag.equals(buttonTag)) {
-//
-//                buttonBundle.putString("buttonTag", buttonTag);
-//
-//                InfoBlock newInfBlock = new InfoBlock();
-//                newInfBlock.setArguments(buttonBundle);
-//
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-//                        .replace(fragment.getId(), newInfBlock, buttonTag)
-//                        .commit();
-//
-//            }  else {
-//
-//                getSupportFragmentManager().beginTransaction()
-//                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-//                        .remove(fragment)
-//                        .commit();
-//            }
-//        } else {
-//            buttonBundle.putString("buttonTag", buttonTag);
-//
-//            InfoBlock newInfBlock = new InfoBlock();
-//            newInfBlock.setArguments(buttonBundle);
-//
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-//                    .add(R.id.infoBlockFragment, newInfBlock, buttonTag)
-//                    .commit();
-//        }
     }
 }
