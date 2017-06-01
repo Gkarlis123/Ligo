@@ -1,5 +1,7 @@
 package karlis_grintals.ligo;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -21,11 +23,16 @@ import layout.InfoBlock;
 
 public class MainActivity extends AppCompatActivity {
 
+    AppHelper appHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        appHelper = new AppHelper(this);
+        SQLiteDatabase sqLiteDatabase = appHelper.getWritableDatabase();
     }
 
 

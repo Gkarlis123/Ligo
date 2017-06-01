@@ -136,16 +136,20 @@
             app:layout_constraintBottom_toTopOf="@+id/humanButtonTwo"
             app:layout_constraintTop_toTopOf="@+id/humanView"/>
 
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/infoBlockFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:background="@android:color/transparent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/humanView"
             app:layout_constraintBottom_toTopOf="@+id/natureView"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintHorizontal_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
