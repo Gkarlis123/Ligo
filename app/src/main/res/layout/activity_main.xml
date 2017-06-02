@@ -1,155 +1,428 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent" >
 
-    android:fillViewport="true"
-    app:layout_collapseParallaxMultiplier="1.0"
-    tools:context="karlis_grintals.ligo.MainActivity">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchorGravity="top|right|end"
+        android:layout_gravity="top|right|end"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_green_light"
+        android:alpha="0.6"
+        app:fabSize="mini"
+        app:srcCompat="?attr/actionModePasteDrawable"
+        android:layout_margin="10dp" />
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:fillViewport="true"
+        app:layout_collapseParallaxMultiplier="1.0"
+        tools:context="karlis_grintals.ligo.MainActivity">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
 
-        <ImageView
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/humanViewWrapper"
+                        android:layout_weight="1">
 
-            android:id="@+id/humanView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/natureView"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            app:srcCompat="@drawable/human_bg"
-            app:layout_constraintHorizontal_bias="1.0" />
+                        <ImageView
+                            android:id="@+id/humanView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/human_bg" />
 
-        <ImageView
-            android:id="@+id/natureView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/fireView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoBlockFragment"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/nature_bg" />
+                        <TextView
+                            android:id="@+id/humanTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/top_bottom_border"
+                            android:padding="5dp"
+                            android:text="CILVĒKS"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignBaseline="@+id/humanView" />
 
-        <ImageView
-            android:id="@+id/fireView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/waterView"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/natureView"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/fire_bg" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentBottom="true" >
 
-        <ImageView
-            android:id="@+id/waterView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fireView"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/water_bg" />
+                            <Button
+                                android:id="@+id/humanButtonOne"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="mielasts"
+                                android:text="MIELASTS"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp"/>
 
-        <Button
-            android:id="@+id/humanButtonOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
-            android:tag="mielasts"
-            android:text="MIELASTS"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            app:layout_constraintDimensionRatio="W,1:2"
-            app:layout_constraintRight_toLeftOf="@+id/humanButtonTwo"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/humanView"
-            android:layout_marginBottom="20dp" />
+                            <Button
+                                android:id="@+id/humanButtonTwo"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="ticejumi"
+                                android:text="TICĒJUMI"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
 
-        <Button
-            android:id="@+id/humanButtonTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
-            android:tag="zilesana"
-            android:text="ZĪLĒŠANA"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            app:layout_constraintDimensionRatio="W,1:2"
-            app:layout_constraintLeft_toRightOf="@+id/humanButtonOne"
-            app:layout_constraintRight_toLeftOf="@+id/humanButtonThree"
-            app:layout_constraintBottom_toBottomOf="@+id/humanView"
-            android:layout_marginBottom="20dp" />
+                            <Button
+                                android:id="@+id/humanButtonThree"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="ligosana"
+                                android:text="LĪGOŠANA"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
 
-        <Button
-            android:id="@+id/humanButtonThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
-            android:tag="ligosana"
-            android:text="LĪGOŠANA"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            app:layout_constraintDimensionRatio="W,1:2"
-            app:layout_constraintLeft_toRightOf="@+id/humanButtonTwo"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/humanView"
-            android:layout_marginBottom="20dp" />
+                        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/top_bottom_border"
-            android:padding="5dp"
-            android:text="CILVĒKS"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/humanButtonTwo"
-            app:layout_constraintTop_toTopOf="@+id/humanView"/>
+                    </RelativeLayout>
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/infoBlockFragment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:background="@android:color/transparent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/humanView"
-            app:layout_constraintBottom_toTopOf="@+id/natureView"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintHorizontal_bias="0.0" />
+                    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/humanFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:animateLayoutChanges="true"
+                        android:orientation="vertical" />
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/natureViewWrapper"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/natureView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/nature_bg" />
+
+                        <TextView
+                            android:id="@+id/natureTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/top_bottom_border"
+                            android:padding="5dp"
+                            android:text="DABA"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignBaseline="@+id/natureView" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentBottom="true" >
+
+                            <Button
+                                android:id="@+id/natureButtonOne"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="vainagi"
+                                android:text="VAINAGI"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/natureButtonTwo"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="januzales"
+                                android:text="JĀŅU ZĀLES"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/natureButtonThree"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_border"
+                                android:tag="papardeszieds"
+                                android:text="PAPARDES ZIEDS"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/natureFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:animateLayoutChanges="true"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/fireViewWrapper"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/fireView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/fire_bg" />
+
+                        <TextView
+                            android:id="@+id/fireTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/top_bottom_border"
+                            android:padding="5dp"
+                            android:text="DABA"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignBaseline="@+id/fireView" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentBottom="true" >
+
+                            <Button
+                                android:id="@+id/fireButtonOne"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="januguns"
+                                android:text="JĀŅUGUNS"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/fireButtonTwo"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="pudele"
+                                android:text="PŪDELES PACELŠANA"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/fireButtonThree"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_border"
+                                android:tag="rituali"
+                                android:text="RITULI"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/fireFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:animateLayoutChanges="true"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/waterViewWrapper"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/waterView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/water_bg" />
+
+                        <TextView
+                            android:id="@+id/waterTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/top_bottom_border"
+                            android:padding="5dp"
+                            android:text="DABA"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignBaseline="@+id/waterView" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentBottom="true" >
+
+                            <Button
+                                android:id="@+id/waterButtonOne"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="pirtiiesana"
+                                android:text="PIRTĪ IEŠANA"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/waterButtonTwo"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/button_border"
+                                android:tag="pelde"
+                                android:text="PELDE"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                            <Button
+                                android:id="@+id/waterButtonThree"
+                                android:layout_width="110dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_border"
+                                android:tag="ritarasa"
+                                android:text="RĪTA RASA"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"
+                                android:padding="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="20dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/waterFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:animateLayoutChanges="true"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,13 +1,12 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="layout.InfoBlock"
     android:padding="20dp"
-    >
+    android:id="@+id/infoBlockFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:background="@android:color/transparent"
         android:id="@+id/infoText"
@@ -19,7 +18,5 @@
         android:visibility="visible"
         tools:layout_editor_absoluteY="20dp"
         android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginLeft="0dp" />
+</LinearLayout>

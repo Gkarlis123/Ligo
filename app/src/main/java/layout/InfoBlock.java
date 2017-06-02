@@ -12,11 +12,13 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import karlis_grintals.ligo.AppDatabaseAdapter;
 import karlis_grintals.ligo.R;
 
 public class InfoBlock extends Fragment {
 
     @BindView(R.id.infoText) TextView infoText;
+    AppDatabaseAdapter appHelper;
 
     public InfoBlock() {
         // Required empty public constructor
@@ -32,7 +34,11 @@ public class InfoBlock extends Fragment {
         Bundle bundle = this.getArguments();
         String buttonTag = bundle.getString("buttonTag");
 
-        infoText.setText(buttonTag);
+        appHelper = new AppDatabaseAdapter(getActivity());
+
+        String data = appHelper.getData(buttonTag);
+
+        infoText.setText(data);
         // Inflate the layout for this fragment
         return view;
     }
