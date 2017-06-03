@@ -29,9 +29,9 @@ public class AppDatabaseAdapter {
         ContentValues contentValues = new ContentValues();
 
         for (Bundle task : taskList) {
-            String[] whereArgs = {task.getString("task")};
+            String[] whereArgs = {Integer.toString(task.getInt("checkbox_id"))};
             contentValues.put(helper.STATUS, task.getBoolean("status"));
-            db.update(helper.TABLE_NAME_TODO_LIST, contentValues, helper.SECTION_NAME + "=?", whereArgs);
+            db.update(helper.TABLE_NAME_TODO_LIST, contentValues, helper.TASK_ID + "=?", whereArgs);
         }
     }
 
@@ -80,7 +80,8 @@ public class AppDatabaseAdapter {
 
         String[] columns = {helper.TASK_NAME, helper.STATUS};
 
-        Cursor cursor = db.query(helper.TABLE_NAME_TODO_LIST, columns, helper.TASK_ID, null, null, null, null);
+
+        Cursor cursor = db.query(helper.TABLE_NAME_TODO_LIST, columns, null, null, null, null, null);
 
         Integer taskNameColumnIndex = cursor.getColumnIndex(helper.TASK_NAME);
         Integer taskStatusColumnIndex = cursor.getColumnIndex(helper.STATUS);
@@ -90,7 +91,7 @@ public class AppDatabaseAdapter {
 
         while (cursor.moveToNext()) {
             Bundle taskBundle = new Bundle();
-            Boolean  taskStatus = Boolean.parseBoolean(cursor.getString(taskStatusColumnIndex));
+            Boolean  taskStatus = (Integer.parseInt(cursor.getString(taskStatusColumnIndex)) != 0);
 
             taskBundle.putBoolean("status", taskStatus);
             taskBundle.putString("task", cursor.getString(taskNameColumnIndex));

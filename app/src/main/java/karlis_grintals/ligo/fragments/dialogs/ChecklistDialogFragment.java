@@ -14,7 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import java.util.ArrayList;
 import java.util.List;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,15 +46,20 @@ public class ChecklistDialogFragment extends DialogFragment {
         LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
 
+        int counter = 1;
+
         for (Bundle task : tasks) {
+
             CheckBox cb = new CheckBox(getActivity());
 
             cb.setText( task.getString("task"));
             cb.setChecked(task.getBoolean("status"));
             cb.setLayoutParams(lparams);
             cb.setPadding(0, 15, 0, 15);
+            cb.setTag("checkbox_" + counter);
 
             layout.addView(cb);
+            counter++;
         }
 
         return dialog;
@@ -59,7 +67,27 @@ public class ChecklistDialogFragment extends DialogFragment {
 
     @OnClick({R.id.saveTasks}) public void updateTaskStatus (View v) {
 
+        ArrayList<Bundle> checkboxList = new ArrayList<Bundle>();
         LinearLayout checkboxWrapperLayout = (LinearLayout) v.getParent();
+        LinearLayout checkboxWrapper = (LinearLayout) checkboxWrapperLayout.getChildAt(1);
 
+        final int childCount = checkboxWrapper.getChildCount();
+
+        for (int i = 1; i <= childCount; i++) {
+            CheckBox checkbox = (CheckBox)(getView().findViewWithTag("checkbox_" + i));
+            Bundle checkboxBundle = new Bundle();
+
+            Boolean checked = (Boolean) checkbox.isChecked();
+
+            checkboxBundle.putBoolean("status", checked);
+            checkboxBundle.putInt("checkbox_id", i);
+
+            checkboxList.add(checkboxBundle);
+        }
+
+        helper.updateTasks(checkboxList);
+
+        getDialog().dismiss();
+        Toast.makeText(v.getContext(), "Jāņu Uzdevumi Saglabāti!", Toast.LENGTH_SHORT).show();
     }
 }
